@@ -43,6 +43,8 @@ public class ThreadDemo07 {
 
 class Example {
 
+    private Object object = new Object();
+
     /**
      * synchronized (object)：对该object对象上锁
      */
@@ -55,7 +57,8 @@ class Example {
 //            }
 //            System.out.println(Thread.currentThread().getName() + " Example.executor:" + i);
 
-            synchronized (this) { //this代表当前对象
+//            synchronized (this) { //this代表当前对象
+            synchronized (object) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
