@@ -1,7 +1,7 @@
 package thread;
 
 /**
- * 生产者和消费者
+ * 生产者和消费者：wait和notifyAll的使用（必须在synchronized方法中使用）
  */
 public class ProducerConsumerDemo {
 
