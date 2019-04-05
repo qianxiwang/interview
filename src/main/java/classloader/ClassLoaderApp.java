@@ -9,7 +9,7 @@ package classloader;
  * 3）初始化：执行类变量的赋值和静态代码块
  * <p>
  * <p>
- * loadClass：仅仅是完成了第一个操作，也就是所谓的加载。
+ * loadClass：仅仅是完成了第一个操作，也就是所谓的加载。（Spring中的Bean就是使用这种lazy机制）
  * <p>
  * forName：已经是初始化完成了
  */
