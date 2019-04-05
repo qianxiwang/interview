@@ -7,6 +7,11 @@ package classloader;
  * 1）加载：ClassLoader加载class字节码文件，生成Class对象
  * 2）链接：校验、准备、解析的过程
  * 3）初始化：执行类变量的赋值和静态代码块
+ * <p>
+ * <p>
+ * loadClass：仅仅是完成了第一个操作，也就是所谓的加载。
+ * <p>
+ * forName：已经是初始化完成了
  */
 public class ClassLoaderApp {
 
