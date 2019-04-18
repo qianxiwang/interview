@@ -1,14 +1,16 @@
 package DataSource
 
-import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.sources.{BaseRelation, RelationProvider, SchemaRelationProvider}
+import org.apache.spark.sql.{DataFrame, SQLContext, SaveMode}
+import org.apache.spark.sql.sources.{BaseRelation, InsertableRelation, RelationProvider, SchemaRelationProvider}
 import org.apache.spark.sql.types.StructType
 
 /**
   * 数据格式：
   * 1000,ruoze,0,10000,200000
   */
-class DefaultSource extends RelationProvider with SchemaRelationProvider {
+class DefaultSource extends RelationProvider
+  with SchemaRelationProvider
+  with InsertableRelation {
 
 
   //重写SchemaRelationProvider里面的方法
@@ -30,4 +32,10 @@ class DefaultSource extends RelationProvider with SchemaRelationProvider {
 
   }
 
+  //实现写出去的功能
+  override def insert(data: DataFrame, overwrite: Boolean): Unit = {
+    data.write.format("")
+      .mode(if (overwrite) SaveMode.Overwrite else SaveMode.Append)
+      .save("")
+  }
 }
