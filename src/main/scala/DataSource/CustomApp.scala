@@ -13,9 +13,14 @@ object CustomApp {
       .master("local[2]")
       .getOrCreate()
 
-    val people = spark.read.format("DataSource.DefaultSource").option("path", "/wangqingguo/bigdata/testdata/extds.data").load()
+    val people = spark.read.format("DataSource.DefaultSource")
+      .option("path", "/wangqingguo/bigdata/testdata/extds.data").load()
 
     people.show()
+
+    people.write.format("json")
+      .mode("overwrite")
+      .save("/wangqingguo/bigdata/testdata/extds-output")
 
 
     spark.stop()
